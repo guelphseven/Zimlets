@@ -71,10 +71,10 @@ function() {
 
 com_zimbra_gryphnews.prototype.singleClicked =
 function() {	
-	this.gryphrss_showFeedsInMiniCal = this.getUserProperty("guelphrss_showFeedsInMiniCal") == "true";
+	this.gryphrss_showFeedsInMiniCal = this.getUserProperty("gryphrss_showFeedsInMiniCal") == "true";
 	//if the option was recently changed using pref, use that value
 	if(document.getElementById("gryphrss_showFeedsInMiniCal") != undefined) {
-		this.gryphrss_showFeedsInMiniCal = document.getElementById("guelphrss_showFeedsInMiniCal").checked;
+		this.gryphrss_showFeedsInMiniCal = document.getElementById("gryphrss_showFeedsInMiniCal").checked;
 	}
 	
 	var postCallback = null;
@@ -252,10 +252,10 @@ function() {
 
 com_zimbra_gryphnews.prototype._okBtnListner =
 function() {
-	if (document.getElementById("gryphrss_showFeedsInMiniCal").checked && !this.guelphrss_showFeedsInMiniCal
-		|| !document.getElementById("gryphrss_showFeedsInMiniCal").checked && this.guelphrss_showFeedsInMiniCal) {
+	if (document.getElementById("gryphrss_showFeedsInMiniCal").checked && !this.gryphrss_showFeedsInMiniCal
+		|| !document.getElementById("gryphrss_showFeedsInMiniCal").checked && this.gryphrss_showFeedsInMiniCal) {
 
-		this.setUserProperty("gryphrss_showFeedsInMiniCal", document.getElementById("guelphrss_showFeedsInMiniCal").checked, true);
+		this.setUserProperty("gryphrss_showFeedsInMiniCal", document.getElementById("gryphrss_showFeedsInMiniCal").checked, true);
 	} 
 	this.pbDialog.popdown();
 };
