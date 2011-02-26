@@ -1,41 +1,23 @@
-/*
- * ***** BEGIN LICENSE BLOCK *****
- *
- * Zimbra Collaboration Suite Zimlets
- * Copyright (C) 2006, 2007 Zimbra, Inc.
- *
- * The contents of this file are subject to the Yahoo! Public License
- * Version 1.0 ("License"); you may not use this file except in
- * compliance with the License.  You may obtain a copy of the License at
- * http://www.zimbra.com/license.
- *
- * Software distributed under the License is distributed on an "AS IS"
- * basis, WITHOUT WARRANTY OF ANY KIND, either express or implied.
- *
- * ***** END LICENSE BLOCK *****
- *@Author Raja Rao DV
- */
-
-function com_zimbra_rssexample() {
+function com_zimbra_gryphnews() {
 }
-com_zimbra_rssexample.prototype = new ZmZimletBase();
-com_zimbra_rssexample.prototype.constructor = com_zimbra_rssexample;
+com_zimbra_gryphnews.prototype = new ZmZimletBase();
+com_zimbra_gryphnews.prototype.constructor = com_zimbra_gryphnews;
 
-com_zimbra_rssexample._feed = "http://feeds.feedburner.com/uoguelph";
+com_zimbra_gryphnews._feed = "http://feeds.feedburner.com/uoguelph";
 
 
 //--------------------------------------
 //		CODE THAT FETCHES RSS FEED
 //--------------------------------------
 
-com_zimbra_rssexample.prototype._invoke =
+com_zimbra_gryphnews.prototype._invoke =
 function(postCallback) {
-	var feedUrl =  ZmZimletBase.PROXY + AjxStringUtil.urlComponentEncode(com_zimbra_rssexample._feed);
+	var feedUrl =  ZmZimletBase.PROXY + AjxStringUtil.urlComponentEncode(com_zimbra_gryphnews._feed);
 
 	AjxRpc.invoke(null, feedUrl, null, new AjxCallback(this, this._reponseHandler, postCallback), true);
 };
 
-com_zimbra_rssexample.prototype._reponseHandler =
+com_zimbra_gryphnews.prototype._reponseHandler =
 function(postCallback, reponse) {
 	var items = "";
 	try {
@@ -70,7 +52,7 @@ function(postCallback, reponse) {
 
 };
 
-com_zimbra_rssexample.prototype._showErrorMsg =
+com_zimbra_gryphnews.prototype._showErrorMsg =
 function(msg) {
 	var msgDialog = appCtxt.getMsgDialog();
 	msgDialog.reset();
@@ -82,21 +64,21 @@ function(msg) {
 //--------------------------------------
 //		USER INTERACTION HANDLERS
 //--------------------------------------
-com_zimbra_rssexample.prototype.doubleClicked =
+com_zimbra_gryphnews.prototype.doubleClicked =
 function() {	
 	this.singleClicked();
 };
 
-com_zimbra_rssexample.prototype.singleClicked =
+com_zimbra_gryphnews.prototype.singleClicked =
 function() {	
-	this.rsseg_showFeedsInMiniCal = this.getUserProperty("rsseg_showFeedsInMiniCal") == "true";
+	this.gryphrss_showFeedsInMiniCal = this.getUserProperty("rsseg_showFeedsInMiniCal") == "true";
 	//if the option was recently changed using pref, use that value
-	if(document.getElementById("rsseg_showFeedsInMiniCal") != undefined) {
-		this.rsseg_showFeedsInMiniCal = document.getElementById("rsseg_showFeedsInMiniCal").checked;
+	if(document.getElementById("gryphrss_showFeedsInMiniCal") != undefined) {
+		this.gryphrss_showFeedsInMiniCal = document.getElementById("rsseg_showFeedsInMiniCal").checked;
 	}
 	
 	var postCallback = null;
-	if(this.rsseg_showFeedsInMiniCal) {//show in minical..
+	if(this.gryphrss_showFeedsInMiniCal) {//show in minical..
 		if(this._visible) {//if rss feed is visible.. clear timeout, and then swap it
 			if(this._timerID){
 				clearTimeout(this._timerID);
@@ -111,9 +93,9 @@ function() {
 	this._invoke(postCallback);
 };
 
-com_zimbra_rssexample.prototype.menuItemSelected = function(itemId) {
+com_zimbra_gryphnews.prototype.menuItemSelected = function(itemId) {
 	switch (itemId) {
-		case "smseg_preferences":
+		case "gryphnews_preferences":
 			this._displayPrefDialog();
 			break;
 	}
@@ -122,28 +104,28 @@ com_zimbra_rssexample.prototype.menuItemSelected = function(itemId) {
 //--------------------------------------
 //		DIALOG VIEW
 //--------------------------------------
-com_zimbra_rssexample.prototype._displayRSSResultsDialog =
+com_zimbra_gryphnews.prototype._displayRSSResultsDialog =
 function() {
-	if (this.rssExampleDlg) {
+	if (this.gryphnewsDlg) {
 		this._parentView.getHtmlElement().innerHTML = this._constructDialogView();
-		this.rssExampleDlg.popup();
+		this.gryphnewsDlg.popup();
 		return;
 	}
 	this._parentView = new DwtComposite(this.getShell());
 	this._parentView.setSize("550", "300");
 	this._parentView.getHtmlElement().style.overflow = "auto";
 	this._parentView.getHtmlElement().innerHTML = this._constructDialogView();
-	this.rssExampleDlg = this._createDialog({title:"Gryph News", view:this._parentView, standardButtons : [DwtDialog.OK_BUTTON]});
-	this.rssExampleDlg.popup();
+	this.gryphnewsDlg = this._createDialog({title:"Gryph News", view:this._parentView, standardButtons : [DwtDialog.OK_BUTTON]});
+	this.gryphnewsDlg.popup();
 };
 
-com_zimbra_rssexample.prototype._constructDialogView =
+com_zimbra_gryphnews.prototype._constructDialogView =
 function() {
 	var html = new Array();
 	var i = 0;
 	for(var j=0;j<this.titleDescArray.length; j++) {
 		var val = this.titleDescArray[j];
-		html[i++] = "<div class='rsseg_HdrDiv'>";
+		html[i++] = "<div class='gryphrss_HdrDiv'>";
 		html[i++] = "<TABLE  cellpadding=5>";
 		html[i++] = "<TR>";
 		html[i++] = "<TD>";
@@ -152,7 +134,7 @@ function() {
 		html[i++] = "</TR>";
 		html[i++] = "</TABLE>";
 		html[i++] = "</div>";
-		html[i++] = "<div class='rsseg_sectionDiv'>";
+		html[i++] = "<div class='gryphrss_sectionDiv'>";
 		html[i++] = "<TABLE  cellpadding=5>";
 		html[i++] = "<TR>";
 		html[i++] = "<TD>";
@@ -175,7 +157,7 @@ function() {
 //		MINICAL VIEW
 //--------------------------------------
 
-com_zimbra_rssexample.prototype._showRSSInMiniCal = function() {
+com_zimbra_gryphnews.prototype._showRSSInMiniCal = function() {
     this._visible = !this._visible;
 
 	if(!this._miniCal) {
@@ -186,7 +168,7 @@ com_zimbra_rssexample.prototype._showRSSInMiniCal = function() {
         if (!this._newDiv) {
             this._newDiv = document.createElement("div");
 
-            this._newDiv.id = "rssexample_DIV";;
+            this._newDiv.id = "gryphnews_DIV";;
             this._newDiv.style.zIndex = 900;
 			this._newDiv.style.width = 163;
             this._newDiv.style.backgroundColor = "white";
@@ -201,7 +183,7 @@ com_zimbra_rssexample.prototype._showRSSInMiniCal = function() {
     }
 };
 
-com_zimbra_rssexample.prototype._showMinicalView =
+com_zimbra_gryphnews.prototype._showMinicalView =
 function() {
 	if(this._currentFeedIndex ==this.titleDescArray.length) {
 		this._currentFeedIndex =0;//reset
@@ -231,7 +213,7 @@ function() {
 //		PROPERTIES DIALOG...
 //--------------------------------------
 
-com_zimbra_rssexample.prototype._displayPrefDialog =
+com_zimbra_gryphnews.prototype._displayPrefDialog =
 function() {
 	//if zimlet dialog already exists...
 	if (this.pbDialog) {
@@ -243,8 +225,8 @@ function() {
 
 
 	//show the checkbox checked if needed
-	if (this.getUserProperty("rsseg_showFeedsInMiniCal") == "true") {
-		document.getElementById("rsseg_showFeedsInMiniCal").checked = true;
+	if (this.getUserProperty("gryphrss_showFeedsInMiniCal") == "true") {
+		document.getElementById("gryphrss_showFeedsInMiniCal").checked = true;
 	}
 
 
@@ -257,23 +239,23 @@ function() {
 };
 
 
-com_zimbra_rssexample.prototype._createPreferenceView =
+com_zimbra_gryphnews.prototype._createPreferenceView =
 function() {
 	var html = new Array();
 	var i = 0;
 	html[i++] = "<DIV>";
-	html[i++] = "<input id='rsseg_showFeedsInMiniCal'  type='checkbox'/>Show RSS Feed in minical(and not in dialog)";
+	html[i++] = "<input id='gryphrss_showFeedsInMiniCal'  type='checkbox'/>Show RSS Feed in minical(and not in dialog)";
 	html[i++] = "</DIV>";
 	return html.join("");
 };
 
 
-com_zimbra_rssexample.prototype._okBtnListner =
+com_zimbra_gryphnews.prototype._okBtnListner =
 function() {
-	if (document.getElementById("rsseg_showFeedsInMiniCal").checked && !this.rsseg_showFeedsInMiniCal
-		|| !document.getElementById("rsseg_showFeedsInMiniCal").checked && this.rsseg_showFeedsInMiniCal) {
+	if (document.getElementById("gryphrss_showFeedsInMiniCal").checked && !this.rsseg_showFeedsInMiniCal
+		|| !document.getElementById("gryphrss_showFeedsInMiniCal").checked && this.rsseg_showFeedsInMiniCal) {
 
-		this.setUserProperty("rsseg_showFeedsInMiniCal", document.getElementById("rsseg_showFeedsInMiniCal").checked, true);
+		this.setUserProperty("gryphrss_showFeedsInMiniCal", document.getElementById("rsseg_showFeedsInMiniCal").checked, true);
 	} 
 	this.pbDialog.popdown();
 };
