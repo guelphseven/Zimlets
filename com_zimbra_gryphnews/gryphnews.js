@@ -95,7 +95,7 @@ function() {
 
 com_zimbra_gryphnews.prototype.menuItemSelected = function(itemId) {
 	switch (itemId) {
-		case "gryphnews_preferences":
+		case "gryphrss_preferences":
 			this._displayPrefDialog();
 			break;
 	}
