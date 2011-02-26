@@ -1,0 +1,15 @@
+<zimlet name="com_zimbra_gryphnews" version="0.1" description="displays rss form uoguelph.ca">
+  <include>rssexample.js</include>
+  <includeCSS>rssexample.css</includeCSS>
+  <handlerObject>com_zimbra_rssexample</handlerObject>
+
+  <zimletPanelItem label="Gryph News" icon="rssexample-panelIcon">
+    <toolTipText>displays rss feeds from yahoo or cnn</toolTipText>
+		<contextMenu>
+			<menuItem label="Gryph News Preferences" id="smseg_preferences" />
+		</contextMenu>
+  </zimletPanelItem>
+	<userProperties>
+		<property type="string" name="rsseg_showFeedsInMiniCal" value="false"/>
+	</userProperties>
+</zimlet>
