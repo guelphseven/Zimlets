@@ -8,3 +8,5 @@ com_zimbra_gryphnews is an RSS feed which cycles through University of Guelph ne
 com_zimbra_attachmentalert is an extension which checks the email for occurences of the word 'attach', and will prompt the user if they click send without attaching anything. The original zimlet can be found at gallery.zimbra.com/type/zimlet/attachment-alert; we found that it did not work with our current version of Zimbra, so we fixed it!
 
 com_zimbra_bccalert is an extension which checks the number of addresses in the To: field. If it is over a certain threshold, a prompt gently suggests that the user might want to BCC some of them instead. Very useful with the number of active student groups on campus!
+
+The releases folder contains the .zip files of each zimlet, ready for deployment and installation on a Zimbra server.
