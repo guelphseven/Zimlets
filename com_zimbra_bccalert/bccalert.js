@@ -11,11 +11,14 @@
  * Software distributed under the License is distributed on an "AS IS"
  * basis, WITHOUT WARRANTY OF ANY KIND, either express or implied.
  * ***** END LICENSE BLOCK *****
- * @author Paul Vilchez vilchez.paul@gmail.com
+ * original by:
+ * @author Raja Rao DV rrao@zimbra.com
+ * revised by:
  * @author Wyatt Carss carss.w@gmail.com
+ * @author Paul Vilchez vilchez.paul@gmail.com
  *
- * Checks for attach* word in email and also if there is an attachment.
- * If the email does not have an attachment, throws missing-attachment alert dialog
+ * Checks for to see if there are 3 or more addresses in the BCC field.
+ * If the email has too many addresses, throws bcc-suggestion alert dialog
  */
 
 /**
@@ -59,7 +62,7 @@ function() {
 /**
  * This method is called when sending an email. This function checks and sets/pushes value to
  * boolAndErrorMsgArray indicating if there was an error or not. If there was an error(i.e. attachment is missing),
- * then it will push {hasError:true, errorMsg:"Attachment is missing", zimletName:"bccalertZimlet"} hash-object to boolAndErrorMsgArray array.
+ * then it will push {hasError:true, errorMsg:"bcc suggestion", zimletName:"bccalertZimlet"} hash-object to boolAndErrorMsgArray array.
  *  If there are no errors, it will simply return <code>null</code>.
  *
  * @param {ZmMailMsg} mail 		the mail object
