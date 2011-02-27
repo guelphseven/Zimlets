@@ -11,7 +11,11 @@
  * Software distributed under the License is distributed on an "AS IS"
  * basis, WITHOUT WARRANTY OF ANY KIND, either express or implied.
  * ***** END LICENSE BLOCK *****
+ * original by:
  * @author Raja Rao DV rrao@zimbra.com
+ * revised by:
+ * @author Wyatt Carss carss.w@gmail.com
+ * @author Paul Vilchez vilchez.paul@gmail.com
  *
  * Checks for attach* word in email and also if there is an attachment.
  * If the email does not have an attachment, throws missing-attachment alert dialog
