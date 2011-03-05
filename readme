@@ -1,12 +1,14 @@
+UPDATE: Thanks to a tip from Graham Ballantyne, we've renamed our zimlets to reflect that these were not released by Zimbra. The new namespace is com_guelphseven_[zimletname]. Thanks Graham!
+
 This is the product of the Guelph Seven's dry run on Feb 26, 2011. 
 The dry run was intended to get us used to working with each other and with git; as well as developing some ideas for one of our sponsors, Computing & Communication Services.
 
 Included in this folder are a number of zimlets; extensions for the Zimbra Mail Client.
 
-com_zimbra_gryphnews is an RSS feed which cycles through University of Guelph news stories.
+com_guelphseven_gryphnews is an RSS feed which cycles through University of Guelph news stories.
 
-com_zimbra_attachmentalert is an extension which checks the email for occurences of the word 'attach', and will prompt the user if they click send without attaching anything. The original zimlet can be found at gallery.zimbra.com/type/zimlet/attachment-alert; we found that it did not work with our current version of Zimbra, so we fixed it!
+com_guelphseven_attachmentalert is an extension which checks the email for occurences of the word 'attach', and will prompt the user if they click send without attaching anything. The original zimlet can be found at gallery.zimbra.com/type/zimlet/attachment-alert; we found that it did not work with our current version of Zimbra, so we fixed it!
 
-com_zimbra_bccalert is an extension which checks the number of addresses in the To: field. If it is over a certain threshold, a prompt gently suggests that the user might want to BCC some of them instead. Very useful with the number of active student groups on campus!
+com_guelphseven_bccalert is an extension which checks the number of addresses in the To: field. If it is over a certain threshold, a prompt gently suggests that the user might want to BCC some of them instead. Very useful with the number of active student groups on campus!
 
 The releases folder contains the .zip files of each zimlet, ready for deployment and installation on a Zimbra server.
